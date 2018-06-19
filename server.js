@@ -6,6 +6,11 @@ const morgan = require('morgan');
 
 const presetHandler = require('./presetHandler');
 
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
+ 
+
+
 
 // CORS request middleware
 app.use(cors());
@@ -49,8 +54,8 @@ app.use('/presets/:id', (req, res, next) => {
   }
 });
 
-app.listen(4001, () => {
-  console.log('server listening on port 4001');
+app.listen(server_port, server_ip_address, function () {
+  console.log( "Listening on " + server_ip_address + ", port " + server_port )
 });
 
 // Hooks to handle saving presets on app exit
