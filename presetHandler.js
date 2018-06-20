@@ -31,8 +31,6 @@ const presetHandler = (reqType, index, newPresetArray) => {
 		}
 	}	
 
-
-
 };
 
 // Leave this line so that your presetHandler function can be used elsewhere:

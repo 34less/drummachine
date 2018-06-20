@@ -8,9 +8,6 @@ const presetHandler = require('./presetHandler');
 
 var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 var server_ip_address =  '0.0.0.0';
- 
-
-
 
 // CORS request middleware
 app.use(cors());
@@ -24,6 +21,9 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 const presets = require('./presets');
+
+app.use(express.static(__dirname + '/static'));
+
 
 app.get('/presets', (req, res, next) => {
   res.send(presets);
