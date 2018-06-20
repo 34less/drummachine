@@ -101,7 +101,7 @@ const savePreset = () => {
   flags['#save-preset'] = true;
   const arr = [kicks, snares, hiHats, rideCymbals];
   $.ajax({
-    url: `http://localhost:4001/presets/${activePreset}`,
+    url: `http://localhost:8080/presets/${activePreset}`,
     dataType: 'json',
     contentType: 'application/json',
     type: 'PUT',
@@ -119,7 +119,7 @@ const savePreset = () => {
 
 const getPresets = () => {
   $.get({
-    url: 'http://localhost:4001/presets'
+    url: 'http://localhost:8080/presets'
   })
   .done((results) => {
     let presetDoesNotExist = results.every((presetArrays, index) => {
@@ -338,7 +338,7 @@ $(() => {
     const id = $this.attr('id').slice(7);
     activePreset = id;
     $.ajax({
-      url: `http://localhost:4001/presets/${id}`,
+      url: `http://localhost:8080/presets/${id}`,
       type: 'GET'
     })
     .done((results) => {
